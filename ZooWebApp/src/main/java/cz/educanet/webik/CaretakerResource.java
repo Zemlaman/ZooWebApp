@@ -22,7 +22,7 @@ public class CaretakerResource {
     }
 
     @POST
-    @Path("register")
+    @Path("create")
     public Response createTaker(
             @FormParam("id") int id,
             @FormParam("FirstName") String firstName,
@@ -33,22 +33,11 @@ public class CaretakerResource {
         if(caretakerCheck(caretaker)){
             return Response.ok("This caretaker already exists").build();
         } else {
-            caretaker.add(caretaker);
+            caretakers.add(caretaker);
             return Response.ok("Caretaker:" + caretaker + "is added").build();
         }
     }
 
-    @PUT
-    @Path("/{id}")
-    public Response editCareTaker(@PathParam("id") int id, Caretaker careTaker) {
-
-        if(manager.editCareTaker(id, careTaker)){
-            return Response.ok("Caretaker edited").build();
-        } else {
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }
-
-    }
     @DELETE
     @Path("/{id}")
     public Response removeCareTaker(@PathParam("id") int id) {

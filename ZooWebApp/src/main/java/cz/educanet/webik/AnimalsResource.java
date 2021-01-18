@@ -13,15 +13,15 @@ public class AnimalsResource {
     @Inject
     private AnimalManager manager;
 
-    public static List<Animal> animal = new ArrayList<Animal>();
+    public static List<Animal> animals = new ArrayList<Animal>();
 
     @GET
     public Response getAll() {
-        return Response.ok(animal).build();
+        return Response.ok(animals).build();
     }
 
     @POST
-    @Path("register")
+    @Path("create")
     public Response createAnimal(
             @FormParam("id") int id,
             @FormParam("Name") String name,
@@ -30,25 +30,14 @@ public class AnimalsResource {
             @FormParam("Gender") String gender
     ) {
         Animal animal = new Animal(id, name, age, weigth, gender);
-        if(animalCheck(animal)){
+        if (animalCheck(animal)) {
             return Response.ok("This animal already exists").build();
         } else {
-            animal.add(animal);
+            animals.add(animal);
             return Response.ok("Animal:" + animal + "is added").build();
         }
     }
 
-    @PUT
-    @Path("/{id}")
-    public Response editCareTaker(@PathParam("id") int id, Caretaker careTaker) {
-
-        if(manager.editAnimal(id, careTaker)){
-            return Response.ok("Animal edited").build();
-        } else {
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }
-
-    }
     @DELETE
     @Path("/{id}")
     public Response removeAnimal(@PathParam("id") int id) {
@@ -57,8 +46,8 @@ public class AnimalsResource {
     }
 
     public Boolean animalCheck(Animal animal) {
-        for (int i = 0; i < animal.size(); i++) {
-            if (animal.get(i).getName().equals(animal.getName())) {
+        for (int i = 0; i < animals.size(); i++) {
+            if (animals.get(i).getName().equals(animal.getName())) {
                 return true;
             } else {
                 return false;
@@ -66,3 +55,4 @@ public class AnimalsResource {
         }
         return false;
     }
+}
