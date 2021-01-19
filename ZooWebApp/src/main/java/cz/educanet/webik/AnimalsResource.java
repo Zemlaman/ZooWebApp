@@ -30,7 +30,7 @@ public class AnimalsResource {
             @FormParam("Gender") String gender
     ) {
         Animal animal = new Animal(id, name, age, weigth, gender);
-        if (animalCheck(animal)) {
+        if (manager.animalCheck(animal)) {
             return Response.ok("This animal already exists").build();
         } else {
             animals.add(animal);
@@ -45,14 +45,4 @@ public class AnimalsResource {
         return Response.ok("Done").build();
     }
 
-    public Boolean animalCheck(Animal animal) {
-        for (int i = 0; i < animals.size(); i++) {
-            if (animals.get(i).getName().equals(animal.getName())) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
-    }
 }
