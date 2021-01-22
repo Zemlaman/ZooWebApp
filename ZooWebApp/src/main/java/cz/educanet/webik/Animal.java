@@ -1,8 +1,5 @@
 package cz.educanet.webik;
 
-import javax.enterprise.context.SessionScoped;
-
-@SessionScoped
 public class Animal {
 
     public  int id;
@@ -11,13 +8,6 @@ public class Animal {
     public  double weight;
     public  String gender;
 
-    public Animal(int id, String name, int age, double weight, String gender) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.weight = weight;
-        this.gender = gender;
-    }
 
     public int getId() {
         return id;

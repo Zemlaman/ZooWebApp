@@ -1,9 +1,5 @@
 package cz.educanet.webik;
 
-
-import javax.enterprise.context.SessionScoped;
-
-@SessionScoped
 public class Caretaker {
 
     public int id;
@@ -11,12 +7,6 @@ public class Caretaker {
     public String lastName;
     public String gender;
 
-    public Caretaker(int id, String firstName, String lastName, String gender) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-    }
 
     public int getId() {
         return id;
