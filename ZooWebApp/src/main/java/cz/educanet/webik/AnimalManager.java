@@ -6,7 +6,7 @@ import java.util.List;
 @ApplicationScoped
 public class AnimalManager {
 
-    ArrayList<Animal> animals = new ArrayList<>();
+    public static ArrayList<Animal> animals = new ArrayList<>();
     private int id = 0;
 
     public void addNewAnimal(Animal animal) {

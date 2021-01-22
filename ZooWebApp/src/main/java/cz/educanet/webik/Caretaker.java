@@ -7,6 +7,12 @@ public class Caretaker {
     public String lastName;
     public String gender;
 
+    public Caretaker(int id, String firstName, String lastName, String gender) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+    }
 
     public int getId() {
         return id;

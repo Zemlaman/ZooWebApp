@@ -15,7 +15,7 @@ public class CaretakerManager {
         caretakers.add(caretaker);
     }
 
-    public Caretaker getCartaker(int id) {
+    public Caretaker getCaretaker(int id) {
         for (int i = 0; i < caretakers.size(); i++) {
             if (id == caretakers.get(i).id) {
                 return caretakers.get(i);
@@ -24,15 +24,15 @@ public class CaretakerManager {
         return null;
     }
 
-    public ArrayList<Caretaker> getAllCartakers() {
+    public ArrayList<Caretaker> getAllCaretakers() {
         return caretakers;
     }
 
-    public boolean deleteCartaker(int id) {
-        return caretakers.remove(cartakerCheck(id));
+    public boolean deleteCaretaker(int id) {
+        return caretakers.remove(caretakerCheck(id));
     }
 
-    public boolean cartakerCheck(int id) {
+    public boolean caretakerCheck(int id) {
         for (int i = 0; i < caretakers.size(); i++) {
             if (id == caretakers.get(i).id) {
                 return true;

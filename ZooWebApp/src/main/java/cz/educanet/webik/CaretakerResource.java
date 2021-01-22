@@ -15,26 +15,35 @@ public class CaretakerResource {
 
     @GET
     @Path("{id}")
-    public Response getCartaker(@PathParam("id") int id){
-        return Response.ok(manager.getCartaker(id)).build();
+    public Response getCaretaker(@PathParam("id") int id){
+        return Response.ok(manager.getCaretaker(id)).build();
     }
 
     @GET
     public Response getAll() {
-        return Response.ok(manager.getAllCartakers()).build();
+        return Response.ok(manager.getAllCaretakers()).build();
     }
 
     @POST
     @Path("create")
-    public Response createAnimal(Caretaker caretaker) {
-        manager.addNewCartaker(caretaker);
-        return Response.ok().build();
+    public Response createCaretaker(
+            @FormParam("id") int id,
+            @FormParam("FirstName") String firstName,
+            @FormParam("LastName") String lastName,
+            @FormParam("gender") String gender) {
+        Caretaker caretaker = new Caretaker(id, firstName, lastName, gender);
+        if(manager.caretakerCheck(id)){
+            return Response.ok("This caretaker already exists").build();
+        } else {
+            manager.caretakers.add(caretaker);
+            return Response.ok("Caretaker:" + caretaker + "is added").build();
+        }
     }
 
     @DELETE
     @Path("{id}")
-    public Response removeCartaker(@PathParam("id") int id) {
-        if(manager.deleteCartaker(id)){
+    public Response removeCaretaker(@PathParam("id") int id) {
+        if(manager.deleteCaretaker(id)){
             return Response.ok("Cartaker removed").build();
         } else {
             return Response.ok("Something went wrong!").build();

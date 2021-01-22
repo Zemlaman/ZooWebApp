@@ -27,9 +27,19 @@ public class AnimalsResource {
 
     @POST
     @Path("create")
-    public Response createAnimal(Animal animal) {
-        manager.addNewAnimal(animal);
-        return Response.ok().build();
+    public Response createAnimal(
+            @FormParam("id") int id,
+            @FormParam("Name") String name,
+            @FormParam("Age") int age,
+            @FormParam("Weight") int weigth,
+            @FormParam("Gender") String gender) {
+        Animal animal = new Animal(id, name, age, weigth, gender);
+        if (manager.animalCheck(id)) {
+            return Response.ok("This animal already exists").build();
+        } else {
+            AnimalManager.animals.add(animal);
+            return Response.ok("Animal:" + animal + "is added").build();
+        }
     }
 
     @DELETE
