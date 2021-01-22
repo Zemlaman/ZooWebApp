@@ -29,7 +29,9 @@ public class AnimalManager {
     }
 
     public boolean deleteAnimal(int id) {
-        return animals.remove(animalCheck(id));
+        if (animalCheck(id) == true) {
+            return animals.remove(animalCheck(id));
+        }return false;
     }
 
     public boolean animalCheck(int id) {

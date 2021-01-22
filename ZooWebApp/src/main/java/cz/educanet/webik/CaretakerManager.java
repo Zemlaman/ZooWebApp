@@ -29,7 +29,9 @@ public class CaretakerManager {
     }
 
     public boolean deleteCaretaker(int id) {
-        return caretakers.remove(caretakerCheck(id));
+        if(caretakerCheck(id) == true){
+            return caretakers.remove(caretakerCheck(id));
+        }return false;
     }
 
     public boolean caretakerCheck(int id) {
