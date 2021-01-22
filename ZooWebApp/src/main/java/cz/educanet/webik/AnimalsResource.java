@@ -42,6 +42,17 @@ public class AnimalsResource {
         }
     }
 
+    @PUT
+    @Path("{id}")
+    public Response editAnimals(@PathParam("id") int id, Animal animal){
+        if(manager.editAnimal(id, animal)){
+            return Response.ok("Animal:" + "is changed").build();
+        } else {
+            return Response.ok("Something went wrong!").build();
+        }
+
+    }
+
     @DELETE
     @Path("{id}")
     public Response removeAnimal(@PathParam("id") int id) {

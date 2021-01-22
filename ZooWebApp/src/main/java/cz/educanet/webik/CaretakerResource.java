@@ -40,6 +40,17 @@ public class CaretakerResource {
         }
     }
 
+    @PUT
+    @Path("{id}")
+    public Response editCareTaker(@PathParam("id") int id, Caretaker careTaker){
+        if(manager.editCaretaker(id, careTaker)){
+            return Response.ok("Ok").build();
+        } else {
+            return Response.ok("Something went wrong!").build();
+        }
+    }
+
+
     @DELETE
     @Path("{id}")
     public Response removeCaretaker(@PathParam("id") int id) {

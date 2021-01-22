@@ -9,10 +9,25 @@ public class AnimalManager {
     public static ArrayList<Animal> animals = new ArrayList<>();
     private int id = 0;
 
-    public void addNewAnimal(Animal animal) {
+    public Animal addNewAnimal(Animal animal) {
         id ++;
         animal.setId(id);
         animals.add(animal);
+        return animal;
+    }
+
+    public boolean editAnimal(int id, Animal animal){
+        Animal animalToChange = getAnimal(id);
+
+        if(animalCheck(id)){
+            animal.setName(animalToChange.getName());
+            animal.setAge(animalToChange.getAge());
+            animal.setWeight(animalToChange.getWeight());
+            animal.setGender(animalToChange.getGender());
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public Animal getAnimal(int id) {
@@ -43,6 +58,8 @@ public class AnimalManager {
             }
         } return false;
     }
+
+
 }
 
 

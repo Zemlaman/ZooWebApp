@@ -9,10 +9,22 @@ public class CaretakerManager {
     ArrayList<Caretaker> caretakers = new ArrayList<>();
     private int id = 0;
 
-    public void addNewCartaker(Caretaker caretaker) {
+    public Caretaker addNewCartaker(Caretaker caretaker) {
         id++;
         caretaker.setId(id);
         caretakers.add(caretaker);
+        return caretaker;
+    }
+
+    public boolean editCaretaker(int id, Caretaker careTaker){
+        Caretaker careTakerById = getCaretaker(id);
+
+        if(caretakerCheck(id)){
+            careTaker.setFirstName(careTakerById.getFirstName());
+            careTaker.setLastName(careTakerById.getGender());
+            careTaker.setGender(careTakerById.getGender());
+            return true;
+        }else return false;
     }
 
     public Caretaker getCaretaker(int id) {
